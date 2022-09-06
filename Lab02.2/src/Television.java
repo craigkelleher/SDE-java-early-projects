@@ -1,20 +1,42 @@
 public class Television {
 
-  //every instance of class Television, will have the band and volume attributes
-  //instance variables / fields
   private String brand; // brand name
   private int volume;  // current volume
 
+  //constant because it is a static final
+  public static final int MIN_VOLUME = 0;
+  public static final int MAX_VOLUME = 100;
+
+  // use case for a mutable static field. instanceCounter
+  private static int instanceCount = 0;
+
+  // constructor, because its named after the class without a return class
+  public Television() {
+    instanceCount++;
+  }
+
+  public Television(String brand) {
+    this(); // will invoke constructor that takes 0 parameters
+    setBrand(brand);
+  }
+
+  public Television(String brand, int volume){
+    this(brand);  //invoking television that just takes a string, by this(brand)
+    setVolume(volume);
+  }
+
   public void turnOn(){
-    // Concatenation, a single string that is a concatenation of The + brand + text + volume)
-    //invoke helper function. Verify internet question
+    // Concatenation
     boolean isConnected = verifyInternetConnection();
     System.out.println("The " + brand + " television is on, with a volume of " + volume);
   }
 
   public void turnOff(){
-    // Concatenation
     System.out.println("The " + brand + " television is off");
+  }
+
+  public static int getInstanceCount() {
+    return instanceCount;
   }
 
   public String getBrand() {
@@ -30,7 +52,14 @@ public class Television {
   }
 
   public void setVolume(int volume) {
-    this.volume = volume;
+    if (volume < MIN_VOLUME || volume > MAX_VOLUME){
+      //printf is for formatted string, to format it a particular way
+      // 1st %d corresponds to volume, 2nd Min, 3rd Max volume
+      // %n /n works the same, but %n is operating system inclusive
+      System.out.printf("%d is invalid; volume must be between %d and %d (inclusive).%n", volume, MIN_VOLUME, MAX_VOLUME);
+    } else {
+      this.volume = volume;
+    }
   }
 
   private boolean verifyInternetConnection(){
