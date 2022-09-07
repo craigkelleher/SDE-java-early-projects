@@ -20,18 +20,18 @@ public class Television {
     setBrand(brand);
   }
 
-  public Television(String brand, int volume){
+  public Television(String brand, int volume) {
     this(brand);  //invoking television that just takes a string, by this(brand)
     setVolume(volume);
   }
 
-  public void turnOn(){
+  public void turnOn() {
     // Concatenation
     boolean isConnected = verifyInternetConnection();
     System.out.println("The " + brand + " television is on, with a volume of " + volume);
   }
 
-  public void turnOff(){
+  public void turnOff() {
     System.out.println("The " + brand + " television is off");
   }
 
@@ -44,7 +44,16 @@ public class Television {
   }
 
   public void setBrand(String brand) {
-    this.brand = brand;
+    switch (brand) {
+      case "Samsung":
+      case "LG":
+      case "Sony":
+      case "Toshiba":
+        this.brand = brand;
+        break;
+      default:
+        System.out.println(brand + "The only valid brands are Samsung, LG, Sony, and Toshiba!");
+    }
   }
 
   public int getVolume() {
@@ -52,19 +61,21 @@ public class Television {
   }
 
   public void setVolume(int volume) {
-    if (volume < MIN_VOLUME || volume > MAX_VOLUME){
+    if (volume < MIN_VOLUME || volume > MAX_VOLUME) {
       //printf is for formatted string, to format it a particular way
       // 1st %d corresponds to volume, 2nd Min, 3rd Max volume
       // %n /n works the same, but %n is operating system inclusive
-      System.out.printf("%d is invalid; volume must be between %d and %d (inclusive).%n", volume, MIN_VOLUME, MAX_VOLUME);
+      System.out.printf("%d is invalid; volume must be between %d and %d (inclusive).%n", volume,
+          MIN_VOLUME, MAX_VOLUME);
     } else {
       this.volume = volume;
     }
   }
 
-  private boolean verifyInternetConnection(){
+  private boolean verifyInternetConnection() {
     return true;
   }
+
   public String toString() {
     return "Television{" + "brand=" + getBrand() + ", volume=" + getVolume() + "}";
   }
