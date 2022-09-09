@@ -89,6 +89,6 @@ public class Television {
   }
 
   public String toString() {
-    return "Television " + "brand: " + getBrand() + ", volume:" + getVolume() + ", display: " + getDisplay();
+    return "Television " + "brand: " + getBrand() + ", volume: " + getVolume() + ", display: " + getDisplay();
   }
 }
