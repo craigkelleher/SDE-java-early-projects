@@ -32,6 +32,8 @@ public class Television {
     private String brand;
     private int volume;
     private DisplayType display = DisplayType.LED;
+    // Tuner object
+    private Tuner tuner = new Tuner();
 
     // CONSTRUCTORS - special methods that get called when the client says "new"
     public Television() {
@@ -61,6 +63,18 @@ public class Television {
 
     public void turnOff() {
         System.out.println("Shutting down...goodbye");
+    }
+
+    // changeChannel method
+    public void changeChannel(String channel){
+        // delegate to the tuner
+        tuner.setChannel(channel);
+    }
+
+    // getCurrentChannel
+    public String getCurrentChannel(){
+        // delegate to the tuner
+        return tuner.getChannel();
     }
 
     // ACCESSOR METHODS - these provide "controlled access" to the (private) fields
@@ -121,6 +135,7 @@ public class Television {
         return "com.entertainment.Television" +
                 ": brand=" + getBrand() +
                 ", volume=" + getVolume() +
-                ", display=" + getDisplay();
+                ", display=" + getDisplay() +
+                ", currentChannel =" + getCurrentChannel();
     }
 }
