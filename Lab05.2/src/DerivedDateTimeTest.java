@@ -23,12 +23,12 @@ class DerivedDateTimeTest {
      * To run one test method at a time, uncomment the call to the one you want to execute.
      */
     public static void main(String[] args) {
-        // testPresidentsFirst100Days();
-        // testPopularBirthdays();
-        // testEarlyRetirement();
-        // testLaborDay();
-        // testElectionDay();
-        // testAnniversary();
+         testPresidentsFirst100Days();
+         //testPopularBirthdays();
+         //testEarlyRetirement();
+         //testLaborDay();
+         //testElectionDay();
+         testAnniversary();
     }
 
     /**
@@ -38,7 +38,10 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testPresidentsFirst100Days() {
-        // TODO
+        //
+        LocalDate inauguration = LocalDate.of(2017, 1, 20);
+        LocalDate deadline = inauguration.plusDays(100);
+        System.out.println(deadline);
     }
 
     /**
@@ -49,9 +52,15 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testPopularBirthdays() {
-        // TODO: what is the average birthday of someone conceived on Valentine's Day?
+      // what is the average birthday of someone conceived on Valentine's Day?
+      LocalDate valentines = LocalDate.of(2015, 2, 14);
+      LocalDate birthValentines = valentines.plusWeeks(38);
+      System.out.println(birthValentines);
 
-        // TODO: what is the average birthday of someone conceived on New Year's Eve (after midnight)?
+      // what is the average birthday of someone conceived on New Year's Eve (after midnight)?
+      LocalDate nye = LocalDate.of(2015, 1, 1);
+      LocalDate birthNYE = nye.plusWeeks(38);
+      System.out.println(birthNYE);
     }
 
     /**
@@ -62,7 +71,10 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testEarlyRetirement() {
-        // TODO
+        //
+      LocalDate birthday = LocalDate.of(1989, 04, 15);
+      LocalDate retirement = birthday.plusYears(59).plusMonths(6);
+      System.out.println(retirement);
     }
 
     /**
@@ -73,7 +85,13 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testLaborDay() {
-        // TODO
+        //
+      LocalDate bday = LocalDate
+          .of(1966, 12, 5);
+      LocalDate laborDay = bday
+          .withMonth(11)
+          .with(firstInMonth(DayOfWeek.MONDAY));
+      System.out.println(laborDay);
     }
 
     /**
@@ -83,7 +101,10 @@ class DerivedDateTimeTest {
      * RESULT:
      */
     public static void testElectionDay() {
-        // TODO
+        //
+      LocalDate seed = LocalDate.of(2024, 11, 1);
+      LocalDate electionDay = seed.with(firstInMonth(DayOfWeek.MONDAY)).with(next(DayOfWeek.TUESDAY));
+      System.out.println(electionDay);
     }
 
     /**
@@ -92,9 +113,13 @@ class DerivedDateTimeTest {
      * If their anniversary does not fall on a Saturday, they'd like to have their party the following Saturday.
      * What is the date of the party?
      *
-     * RESULT:
+     * RESULT: 2019 06 08
      */
     public static void testAnniversary() {
-        // TODO
+      // 9/12 lab
+      LocalDate weddingDate = LocalDate.of(1969, 6, 6);
+      LocalDate anniversaryDay = weddingDate.plusYears(50);
+      LocalDate anniversaryParty = anniversaryDay.with(nextOrSame(DayOfWeek.SATURDAY));
+      System.out.println(anniversaryParty);
     }
 }
