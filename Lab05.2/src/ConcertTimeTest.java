@@ -37,6 +37,10 @@ class ConcertTimeTest {
      * RESULT: 
      */
     public static void testLiveConcert() {
-        // TODO
+        //
+        ZonedDateTime webConcertTime = ZonedDateTime.of(LocalDateTime.of(2020, 6, 18, 19, 0), ZoneId.of("Canada/Eastern"));
+        ZonedDateTime ausTime = webConcertTime.withZoneSameInstant(ZoneId.of("Australia/Perth"));
+        System.out.println(webConcertTime);
+        System.out.println(ausTime);
     }
 }
