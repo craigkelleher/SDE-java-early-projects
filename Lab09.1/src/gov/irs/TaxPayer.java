@@ -19,6 +19,15 @@ package gov.irs;
 public interface TaxPayer {
     public static final double HOURLY_TAX_RATE = 0.25;
     public static final double SALARIED_TAX_RATE = 0.30;
+    //public static final double DEFAULT_STANDARD_DEDUCTION = 7500;
     
     public void payTaxes();
+
+    //start as an abstract method
+    // double getStandardDeduction();
+
+    //default is no longer abstract, so needs implementation:
+    default public double getStandardDeduction(){
+        return 7500.0;
+    }
 }
