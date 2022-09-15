@@ -11,6 +11,9 @@ package com.hr.personnel;
 import java.time.LocalDate;
 
 public class HourlyEmployee extends Employee {
+
+    //TODO CONSTANT for minim wage constant
+    public static final double FEDERAL_MINIMUM_WAGE = 15.0;
     // fields
     private double rate;
     private double hours;
@@ -46,9 +49,29 @@ public class HourlyEmployee extends Employee {
         return rate;
     }
 
-    public void setRate(double rate) {
-        this.rate = rate;
+    /* // modify setRATE to throw an illegal argument exception.
+       public void setRate(double rate) {
+          this.rate = rate;
+    } */
+
+    public void setRate(double rate) throws IllegalArgumentException {
+        if (rate < FEDERAL_MINIMUM_WAGE) {
+            throw new IllegalArgumentException("Illegal wage: %.2f. " + rate +
+                " The federal minimum wage is: " + FEDERAL_MINIMUM_WAGE);
+        }
+        else {
+            this.rate = rate;
+        }
     }
+
+    /*
+    public void setRate(double rate) throws IllegalArgumentException {
+        if (rate < FEDERAL_MINIMUM_WAGE) {
+            throw new IllegalArgumentException(string.format(ILLEGAL_RATE_FORMAT, rate, FEDERAL_MINIMUM_WAGE));
+        }
+            this.rate = rate;
+    }
+    */
 
     public double getHours() {
         return hours;

@@ -17,7 +17,7 @@ import java.time.LocalDate;
 /**
  * Application main-class.
  */
-class HRClient {
+class HRClient {/**/
 
     public static void main(String[] args) {
         // create Department object
