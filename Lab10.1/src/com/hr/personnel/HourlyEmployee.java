@@ -12,7 +12,6 @@ import java.time.LocalDate;
 
 public class HourlyEmployee extends Employee {
 
-    //TODO CONSTANT for minim wage constant
     public static final double FEDERAL_MINIMUM_WAGE = 15.0;
     // fields
     private double rate;
