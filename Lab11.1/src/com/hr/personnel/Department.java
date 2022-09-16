@@ -31,8 +31,8 @@ public class Department {
     private String location;
     // change array to collection: what goes inside <> is an object: a class, interface, or array type.
     //private Employee[] employees = new Employee[100]; //Array of employees
-    private Collection<Employee> employees = new ArrayList<>();
-    private int currentIndex = 0;  // for dealing with the array
+    private final Collection<Employee> employees = new ArrayList<>();
+    //private int currentIndex = 0;  // for dealing with the array
 
     // constructors
     public Department() {
